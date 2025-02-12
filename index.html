@@ -74,14 +74,21 @@
 </head>
 <body>
     <div class="radio-player">
-        <h1>Freedom Radio 1</h1>
+        <h1 id="radioTitle">Freedom Radio 1</h1>
         <div class="cover">
             <img id="logoImage" src="https://github.com/gunout/Freedom_Radio_Unofficial/blob/main/freedom.png?raw=true" alt="Logo de la radio">
         </div>
         <audio id="audio" preload="auto">
-            <source src="http://freedomice.streamakaci.com/freedom.mp3" type="audio/mpeg">
+            <source id="audioSource" src="http://freedomice.streamakaci.com/freedom.mp3" type="audio/mpeg">
             Votre navigateur ne supporte pas l'élément audio.
         </audio>
+        <div>
+            <label for="radioSelect">Choisir une station:</label>
+            <select id="radioSelect">
+                <option value="http://freedomice.streamakaci.com/freedom.mp3">Freedom Radio 1</option>
+                <option value="http://freedomice.streamakaci.com/freedom2.mp3">Freedom Radio 2</option>
+            </select>
+        </div>
         <div class="controls">
             <button id="play" class="play">▶</button>
             <button id="pause" class="pause">⏸</button>
@@ -91,9 +98,19 @@
 
     <script>
         const audio = document.getElementById('audio');
+        const audioSource = document.getElementById('audioSource');
         const playButton = document.getElementById('play');
         const pauseButton = document.getElementById('pause');
         const stopButton = document.getElementById('stop');
+        const radioSelect = document.getElementById('radioSelect');
+        const radioTitle = document.getElementById('radioTitle');
+
+        radioSelect.addEventListener('change', () => {
+            const selectedValue = radioSelect.value;
+            audioSource.src = selectedValue;
+            audio.load(); // Recharger l'audio avec la nouvelle source
+            radioTitle.textContent = radioSelect.options[radioSelect.selectedIndex].text; // Mettre à jour le titre
+        });
 
         playButton.addEventListener('click', () => {
             audio.play();
