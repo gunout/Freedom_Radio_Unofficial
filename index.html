@@ -27,12 +27,12 @@
             backdrop-filter: blur(20px);
             text-align: center;
             width: 350px;
-            border: 2px solid #00ffff; /* Bordure cyan */
+            border: 2px solid #00ffff; /* Bordure cyan par défaut */
         }
 
         h1 {
             font-family: 'Courier New', Courier, monospace;
-            color: #00ffff; /* Titre en cyan */
+            color: #00ffff; /* Titre en cyan par défaut */
             margin-bottom: 20px;
             text-shadow: 0 0 10px #00ffff; /* Ombre de texte en cyan */
         }
@@ -98,6 +98,13 @@
             <button id="pause" class="pause">⏸</button>
             <button id="stop" class="stop">■</button>
         </div>
+        <div>
+            <label for="colorSelect">Choisir une couleur:</label>
+            <select id="colorSelect">
+                <option value="cyan">Cyan</option>
+                <option value="pink">Rose Fluo</option>
+            </select>
+        </div>
     </div>
 
     <script>
@@ -108,6 +115,8 @@
         const stopButton = document.getElementById('stop');
         const radioSelect = document.getElementById('radioSelect');
         const radioTitle = document.getElementById('radioTitle');
+        const colorSelect = document.getElementById('colorSelect');
+        const radioPlayer = document.querySelector('.radio-player');
 
         radioSelect.addEventListener('change', () => {
             const selectedValue = radioSelect.value;
@@ -127,6 +136,21 @@
         stopButton.addEventListener('click', () => {
             audio.pause();
             audio.currentTime = 0; // Réinitialiser la lecture
+        });
+
+        colorSelect.addEventListener('change', () => {
+            const selectedColor = colorSelect.value;
+            if (selectedColor === 'cyan') {
+                radioPlayer.style.border = '2px solid #00ffff'; // Bordure cyan
+                h1.style.color = '#00ffff'; // Titre en cyan
+                button.style.border = '2px solid #00ffff'; // Bord des boutons en cyan
+                button.style.background = 'rgba(0, 255, 255, 0.2)'; // Fond des boutons en cyan clair
+            } else if (selectedColor === 'pink') {
+                radioPlayer.style.border = '2px solid #ff1493'; // Bordure rose
+                h1.style.color = '#ff1493'; // Titre en rose
+                button.style.border = '2px solid #ff1493'; // Bord des boutons en rose
+                button.style.background = 'rgba(255, 20, 147, 0.2)'; // Fond des boutons en rose clair
+            }
         });
     </script>
 </body>
