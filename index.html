@@ -11,34 +11,34 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url('https://github.com/gunout/Freedom_Radio_Unofficial/blob/main/freedom.png?raw=true'); /* Remplacez par l'URL de votre image */
-            background-size: cover; /* Couvre tout l'écran */
-            background-position: center; /* Centre l'image */
+            background-image: url('https://github.com/gunout/Freedom_Radio_Unofficial/blob/main/freedom.png?raw=true'); 
+            background-size: cover;
+            background-position: center;
             color: #ffffff;
             font-family: 'Courier New', Courier, monospace;
             overflow: hidden;
         }
 
         .radio-player {
-            background: rgba(20, 20, 20, 0.0); /* Rendre le fond plus translucide */
+            background: rgba(20, 20, 20, 0.8); 
             border-radius: 15px;
             padding: 20px;
             box-shadow: 0 4px 30px rgba(0, 255, 255, 0.5);
             backdrop-filter: blur(20px);
             text-align: center;
-            width: 350px;
-            border: 2px solid #00ffff; /* Bordure cyan par défaut */
+            width: 90%; /* Utilisation d'une largeur responsive */
+            max-width: 350px; /* Largeur maximum pour les écrans plus grands */
+            border: 2px solid #00ffff; 
         }
 
         h1 {
-            font-family: 'Courier New', Courier, monospace;
-            color: #00ffff; /* Titre en cyan par défaut */
+            color: #00ffff; 
             margin-bottom: 20px;
-            text-shadow: 0 0 10px #00ffff; /* Ombre de texte en cyan */
+            text-shadow: 0 0 10px #00ffff; 
         }
 
         audio {
-            display: none; /* Cacher le lecteur audio standard */
+            display: none; 
         }
 
         .controls {
@@ -46,18 +46,19 @@
         }
 
         button {
-            background: rgba(0, 255, 255, 0.2); /* Fond des boutons en cyan clair */
-            border: 2px solid #00ffff; /* Bord des boutons en cyan */
+            background: rgba(0, 255, 255, 0.2);
+            border: 2px solid #00ffff;
             border-radius: 5px;
-            color: #00ffff; /* Texte des boutons en cyan */
+            color: #00ffff; 
             padding: 10px 15px;
             margin: 5px;
             cursor: pointer;
             transition: background 0.3s, transform 0.2s;
+            font-size: 16px; /* Augmenter la taille de police pour la lisibilité */
         }
 
         button:hover {
-            background: rgba(0, 255, 255, 0.5); /* Fond au survol en cyan */
+            background: rgba(0, 255, 255, 0.5);
             transform: scale(1.05);
         }
 
@@ -68,11 +69,21 @@
         .cover img {
             max-width: 100%;
             border-radius: 10px;
-            border: 2px solid #00ffff; /* Bordure de l'image en cyan */
+            border: 2px solid #00ffff; 
         }
 
         label {
-            color: #000000; /* Texte en noir */
+            color: #000000; 
+            display: block; /* Améliorer la lisibilité sur mobile */
+            margin-top: 10px;
+        }
+
+        /* Media Queries pour les petits écrans */
+        @media (max-width: 480px) {
+            button {
+                width: 100%; /* Rendre les boutons plein écran sur mobile */
+                font-size: 18px; /* Augmenter la taille de police pour mobile */
+            }
         }
     </style>
 </head>
@@ -121,8 +132,8 @@
         radioSelect.addEventListener('change', () => {
             const selectedValue = radioSelect.value;
             audioSource.src = selectedValue;
-            audio.load(); // Recharger l'audio avec la nouvelle source
-            radioTitle.textContent = radioSelect.options[radioSelect.selectedIndex].text; // Mettre à jour le titre
+            audio.load(); 
+            radioTitle.textContent = radioSelect.options[radioSelect.selectedIndex].text; 
         });
 
         playButton.addEventListener('click', () => {
@@ -135,23 +146,24 @@
 
         stopButton.addEventListener('click', () => {
             audio.pause();
-            audio.currentTime = 0; // Réinitialiser la lecture
+            audio.currentTime = 0; 
         });
 
         colorSelect.addEventListener('change', () => {
             const selectedColor = colorSelect.value;
             if (selectedColor === 'cyan') {
-                radioPlayer.style.border = '2px solid #00ffff'; // Bordure cyan
-                h1.style.color = '#00ffff'; // Titre en cyan
-                button.style.border = '2px solid #00ffff'; // Bord des boutons en cyan
-                button.style.background = 'rgba(0, 255, 255, 0.2)'; // Fond des boutons en cyan clair
+                radioPlayer.style.border = '2px solid #00ffff'; 
+                h1.style.color = '#00ffff'; 
+                button.style.border = '2px solid #00ffff'; 
+                button.style.background = 'rgba(0, 255, 255, 0.2)'; 
             } else if (selectedColor === 'pink') {
-                radioPlayer.style.border = '2px solid #ff1493'; // Bordure rose
-                h1.style.color = '#ff1493'; // Titre en rose
-                button.style.border = '2px solid #ff1493'; // Bord des boutons en rose
-                button.style.background = 'rgba(255, 20, 147, 0.2)'; // Fond des boutons en rose clair
+                radioPlayer.style.border = '2px solid #ff1493'; 
+                h1.style.color = '#ff1493'; 
+                button.style.border = '2px solid #ff1493'; 
+                button.style.background = 'rgba(255, 20, 147, 0.2)'; 
             }
         });
     </script>
 </body>
 </html>
+
