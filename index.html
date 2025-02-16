@@ -110,6 +110,10 @@
             <button id="stop" class="stop">■</button>
         </div>
         <div>
+            <label for="volumeControl">Volume:</label>
+            <input id="volumeControl" type="range" min="0" max="1" step="0.1" value="1">
+        </div>
+        <div>
             <label for="colorSelect">Choisir une couleur:</label>
             <select id="colorSelect">
                 <option value="cyan">Cyan</option>
@@ -128,6 +132,7 @@
         const radioTitle = document.getElementById('radioTitle');
         const colorSelect = document.getElementById('colorSelect');
         const radioPlayer = document.querySelector('.radio-player');
+        const volumeControl = document.getElementById('volumeControl');
 
         radioSelect.addEventListener('change', () => {
             const selectedValue = radioSelect.value;
@@ -149,6 +154,10 @@
             audio.currentTime = 0; 
         });
 
+        volumeControl.addEventListener('input', () => {
+            audio.volume = volumeControl.value; // Met à jour le volume de l'audio
+        });
+
         colorSelect.addEventListener('change', () => {
             const selectedColor = colorSelect.value;
             if (selectedColor === 'cyan') {
@@ -166,5 +175,3 @@
     </script>
 </body>
 </html>
-
-
