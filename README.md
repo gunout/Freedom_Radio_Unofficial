@@ -13,5 +13,9 @@ FREEDOM RADIO DESIGN EXAMPLE
 
 <img width="1811" height="830" alt="Screenshot 2026-03-19 at 01-52-38 Freedom Radio" src="https://github.com/user-attachments/assets/4acdaf59-b087-49d3-b744-10ca76942cdd" />
 
+# Fichier : index.html 
+
+<img width="1810" height="830" alt="Screenshot 2026-03-19 at 01-51-23 Freedom Radio" src="https://github.com/user-attachments/assets/9bc97904-793e-4e5c-b845-72417235622b" />
+
 
 By Gleaphe 2026 .
